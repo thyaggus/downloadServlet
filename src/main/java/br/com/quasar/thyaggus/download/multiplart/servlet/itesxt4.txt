@@ -1,0 +1,53 @@
+Um exemplo que pode ser promissor:
+
+Aqui está um exemplo de código Java que usa o iText 4 para criar um PDF grande em partes e entregá-lo para o Response¹:
+
+```java
+public void createPdf(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    // Set content type
+    response.setContentType("multipart/x-mixed-replace;boundary=END");
+
+    // Set headers for browser to recognize as multipart
+    response.setHeader("Content-Disposition", "attachment; filename=\"largePdf.pdf\"");
+
+    // Create PDF document
+    Document document = new Document();
+    PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
+    writer.setPdfVersion(PdfWriter.VERSION_1_5);
+    writer.setViewerPreferences(PdfWriter.PageModeUseOutlines);
+
+    // Open document
+    document.open();
+
+    // Create large PDF file
+    int numPages = 1000;
+    for (int i = 0; i < numPages; i++) {
+        // Create new page
+        document.newPage();
+
+        // Add content to page
+        Paragraph paragraph = new Paragraph("This is page " + (i + 1));
+        document.add(paragraph);
+
+        // Flush page to output stream
+        writer.flush();
+        response.getOutputStream().flush();
+        response.getOutputStream().println("--END");
+        response.flushBuffer();
+
+        // Check memory usage and exit if too high
+        if (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() > 20000000) {
+            throw new Exception("Memory usage too high");
+        }
+    }
+
+    // Close document
+    document.close();
+}
+```
+
+Espero que isso ajude! Se você tiver alguma dúvida ou precisar de mais informações, por favor me avise!
+
+Origem: conversa com o Bing, 24/03/2023(1) Java: Arquivos e fluxos de dados - DevMedia. https://www.devmedia.com.br/java-arquivos-e-fluxos-de-dados/22859 Acessado 24/03/2023.
+(2) 💻 Descubra +20 exemplos simples de código Java - Crehana. https://www.crehana.com/pt/blog/brasil/exemplos-codigos-java/ Acessado 24/03/2023.
+(3) Meu primeiro programa em Java | Alura. https://www.alura.com.br/artigos/meu-primeiro-programa-em-java Acessado 24/03/2023.
