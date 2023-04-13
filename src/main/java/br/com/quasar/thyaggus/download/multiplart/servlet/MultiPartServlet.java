@@ -49,12 +49,10 @@ public class MultiPartServlet extends HttpServlet {
 
         ServletOutputStream out = response.getOutputStream();
 
-        service = new MultipartService();
-
         for (int i = 0; i < multiplo; i++) {
             byte[] stream = new byte[0];
             try {
-                stream = service.gerarCSV(i);
+                stream = MultipartService.gerarCSV(i);
                 out.write(stream, 0, stream.length);
                 out.flush();
             } catch (Exception e) {

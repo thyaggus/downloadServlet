@@ -16,15 +16,14 @@ public class MultipartService {
         List<Dado> lancamentos = new LinkedList<>();
         for (long i = inicio * QUANTIDADE; i < ((inicio + 1) * QUANTIDADE); i++) {
             lancamentos.add(new Dado(
-                    "Tiago S F",
-                    9988,
-                    12345678901L,
-                    "13/04/1981",
+                    "13/04/2023",
+                    "13/04/2023",
+                    "histórico",
+                    "complemento",
                     "13",
-                    "historico",
-                    "subHistorico",
-                    String.valueOf(i),
+                    "BB",
                     "Origem",
+                    "documento",
                     String.valueOf(i),
                     String.valueOf(i)
             ));
@@ -36,7 +35,7 @@ public class MultipartService {
 
         StringBuilder sb = indice == 0 ? new StringBuilder(new Dado().gerarBarraTitulo(SEPARADOR)) : new StringBuilder();
         List<Dado> lancamentos = gerarLancamentos(indice);
-        lancamentos.stream().forEach(lancamento -> sb.append(lancamento.gerarLinha(SEPARADOR)).append(NOVA_LINHA));
+        lancamentos.forEach(lancamento -> sb.append(lancamento.gerarLinha(SEPARADOR)).append(NOVA_LINHA));
         return sb.toString().getBytes(CARSET);
     }
 }

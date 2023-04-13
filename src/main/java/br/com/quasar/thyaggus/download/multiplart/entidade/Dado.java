@@ -1,15 +1,16 @@
 package br.com.quasar.thyaggus.download.multiplart.entidade;
 
+
 public class Dado {
-    private String nome;
-    private int agencia;
-    private long conta;
-    private String data;
-    private String dia;
+
+    private String dataContabil;
+    private String dataLan;
     private String historico;
-    private String subHistorico;
+    private String complemento;
+    private String lote;
+    private String banco;
+    private String origem;
     private String documento;
-    private String Origem;
     private String valor;
     private String saldo;
 
@@ -17,69 +18,42 @@ public class Dado {
     }
 
     public Dado(
-            String nome,
-            int agencia,
-            long conta,
-            String data,
-            String dia,
+            String dataContabil,
+            String dataLan,
             String historico,
-            String subHistorico,
-            String documento,
+            String complemento,
+            String lote,
+            String banco,
             String origem,
+            String documento,
             String valor,
-            String saldo
-    ) {
-        this.nome = nome;
-        this.agencia = agencia;
-        this.conta = conta;
-        this.data = data;
-        this.dia = dia;
+            String saldo) {
+        this.dataContabil = dataContabil;
+        this.dataLan = dataLan;
         this.historico = historico;
-        this.subHistorico = subHistorico;
+        this.complemento = complemento;
+        this.lote = lote;
+        this.banco = banco;
+        this.origem = origem;
         this.documento = documento;
-        Origem = origem;
         this.valor = valor;
         this.saldo = saldo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getDataContabil() {
+        return dataContabil;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDataContabil(String dataContabil) {
+        this.dataContabil = dataContabil;
     }
 
-    public int getAgencia() {
-        return agencia;
+    public String getDataLan() {
+        return dataLan;
     }
 
-    public void setAgencia(int agencia) {
-        this.agencia = agencia;
-    }
-
-    public long getConta() {
-        return conta;
-    }
-
-    public void setConta(long conta) {
-        this.conta = conta;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getDia() {
-        return dia;
-    }
-
-    public void setDia(String dia) {
-        this.dia = dia;
+    public void setDataLan(String dataLan) {
+        this.dataLan = dataLan;
     }
 
     public String getHistorico() {
@@ -90,12 +64,36 @@ public class Dado {
         this.historico = historico;
     }
 
-    public String getSubHistorico() {
-        return subHistorico;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setSubHistorico(String subHistorico) {
-        this.subHistorico = subHistorico;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getLote() {
+        return lote;
+    }
+
+    public void setLote(String lote) {
+        this.lote = lote;
+    }
+
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
     }
 
     public String getDocumento() {
@@ -104,14 +102,6 @@ public class Dado {
 
     public void setDocumento(String documento) {
         this.documento = documento;
-    }
-
-    public String getOrigem() {
-        return Origem;
-    }
-
-    public void setOrigem(String origem) {
-        Origem = origem;
     }
 
     public String getValor() {
@@ -131,46 +121,42 @@ public class Dado {
     }
 
     public String gerarBarraTitulo(String separador) {
-        return "Nome" + separador +
-                "Agencia" + separador +
-                "Conta" + separador +
-                "Data" + separador +
-                "Dia" + separador +
-                "Historico" + separador +
-                "SubHistorico" + separador +
-                "Documento" + separador +
-                "Origem" + separador +
-                "Valor" + separador +
-                "Saldo" + separador;
+        return "dataContabil" + separador +
+                "dataLan" + separador +
+                "historico" + separador +
+                "complemento" + separador +
+                "lote" + separador +
+                "banco" + separador +
+                "origem" + separador +
+                "documento" + separador +
+                "valor" + separador +
+                "saldo" + separador;
     }
 
     public String gerarLinha(String separador) {
-        return nome + separador +
-                agencia + separador +
-                conta + separador +
-                data + separador +
-                dia + separador +
+        return dataContabil + separador +
+                dataLan + separador +
                 historico + separador +
-                subHistorico + separador +
+                complemento + separador +
+                lote + separador +
+                banco + separador +
+                origem + separador +
                 documento + separador +
-                Origem + separador +
                 valor + separador +
                 saldo + separador;
     }
 
-
     @Override
     public String toString() {
         return "Dado{" +
-                "nome='" + nome + '\'' +
-                ", agencia=" + agencia +
-                ", conta=" + conta +
-                ", data='" + data + '\'' +
-                ", dia='" + dia + '\'' +
+                "dataContabil='" + dataContabil + '\'' +
+                ", dataLan='" + dataLan + '\'' +
                 ", historico='" + historico + '\'' +
-                ", subHistorico='" + subHistorico + '\'' +
-                ", documento=" + documento +
-                ", Origem='" + Origem + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", lote='" + lote + '\'' +
+                ", banco='" + banco + '\'' +
+                ", origem='" + origem + '\'' +
+                ", documento='" + documento + '\'' +
                 ", valor='" + valor + '\'' +
                 ", saldo='" + saldo + '\'' +
                 '}';
