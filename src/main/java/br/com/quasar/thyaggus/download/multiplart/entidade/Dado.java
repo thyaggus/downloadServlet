@@ -1,7 +1,9 @@
 package br.com.quasar.thyaggus.download.multiplart.entidade;
 
 
-public class Dado {
+import java.io.Serializable;
+
+public class Dado implements Serializable {
 
     private String dataContabil;
     private String dataLan;

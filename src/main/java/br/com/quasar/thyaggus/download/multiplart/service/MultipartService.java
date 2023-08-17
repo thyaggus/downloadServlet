@@ -2,6 +2,9 @@ package br.com.quasar.thyaggus.download.multiplart.service;
 
 import br.com.quasar.thyaggus.download.multiplart.entidade.Dado;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,6 +32,13 @@ public class MultipartService {
             ));
         }
         return lancamentos;
+    }
+
+    public static byte[] gerarLancamentosBinario(long indice) throws IOException {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(gerarLancamentos(indice));
+        return bos.toByteArray();
     }
 
     public static byte[] gerarCSV(long indice) throws Exception {
